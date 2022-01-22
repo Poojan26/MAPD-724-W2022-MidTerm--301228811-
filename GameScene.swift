@@ -2,7 +2,7 @@
 //  GameScene.swift
 //  MAPD-724-GAME
 //
-//  Created by Jay on 1/22/22.
+//  Created by Poojan on 1/22/22.
 //
 import UIKit
 import AVFoundation
@@ -18,29 +18,39 @@ class GameScene: SKScene {
     
     // variable instance
     var ocean: Ocean?
+    var plane: Plane?
     
     override func didMove(to view: SKView) {
         screenWidth = frame.width
         screenHeight = frame.height
         name = "GAME"
+        
+        // Add ocean to the scene
         ocean = Ocean()
-        ocean?.position = CGPoint(x:0,y: 700)
+        ocean?.position = CGPoint(x:0,y: 773)
         addChild(ocean!)
         
-        
+        // Add plane to the scene
+        plane = Plane()
+        plane?.position = CGPoint(x:0,y:-495)
+        addChild(plane!)
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
         
+        plane?.TouchMove(newPos: CGPoint(x:pos.x, y: -495))
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
         
+        plane?.TouchMove(newPos: CGPoint(x:pos.x, y: -495))
     }
     
     func touchUp(atPoint pos : CGPoint) {
         
+        plane?.TouchMove(newPos: CGPoint(x:pos.x, y: -495))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -64,6 +74,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         ocean?.Update()
+        plane?.Update()
     }
 }
 

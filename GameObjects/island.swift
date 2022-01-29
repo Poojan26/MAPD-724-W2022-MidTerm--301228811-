@@ -33,7 +33,7 @@ class Island : GameObject
     //initialization
     override func Start() {
         Reset()
-        zPosition = 0
+        zPosition = 1
         verticalSpeed = 5.0
         
     }

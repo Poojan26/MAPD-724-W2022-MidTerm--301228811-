@@ -101,7 +101,14 @@ class GameScene: SKScene {
         for cloud in clouds
         {
             cloud.Update()
+            CollisionManager.SquaredRadiusCheck(scene: self, object1: plane!, object2: cloud)
         }
+        
+        CollisionManager.SquaredRadiusCheck(scene: self, object1: plane!, object2: island!)
+        
+        
+            
+        
     }
 }
 

@@ -15,7 +15,7 @@ class EndScene: SKScene
         
         // Add ocean to the scene
         ocean = Ocean()
-        ocean?.position = CGPoint(x:0,y: 773)
+        ocean?.position = CGPoint(x:773,y: 0)
         addChild(ocean!)
     }
     

@@ -31,7 +31,7 @@ class GameScene: SKScene {
         
         // Add ocean to the scene
         ocean = Ocean()
-        ocean?.position = CGPoint(x:0,y: 773)
+        ocean?.position = CGPoint(x:773,y: 0)
         addChild(ocean!)
         
         // Add osland to the scene
@@ -40,7 +40,7 @@ class GameScene: SKScene {
         
         // Add plane to the scene
         plane = Plane()
-        plane?.position = CGPoint(x:0,y:-495)
+        plane?.position = CGPoint(x:-500,y:0)
         addChild(plane!)
         
         // Add single cloud to the scene
@@ -48,7 +48,7 @@ class GameScene: SKScene {
         //addChild(cloud!)
         
         // Add 3 clouds to the scene
-        for index in 0...2
+        for index in 0...1
         {
             let cloud: Cloud = Cloud()
             clouds.append(cloud)
@@ -82,18 +82,18 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         
-        plane?.TouchMove(newPos: CGPoint(x:pos.x, y: -495))
+        plane?.TouchMove(newPos: CGPoint(x:-500, y: pos.y))
         
     }
     
     func touchMoved(toPoint pos : CGPoint) {
         
-        plane?.TouchMove(newPos: CGPoint(x:pos.x, y: -495))
+        plane?.TouchMove(newPos: CGPoint(x:-500, y: pos.y))
     }
     
     func touchUp(atPoint pos : CGPoint) {
         
-        plane?.TouchMove(newPos: CGPoint(x:pos.x, y: -495))
+        plane?.TouchMove(newPos: CGPoint(x:-500, y: pos.y))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

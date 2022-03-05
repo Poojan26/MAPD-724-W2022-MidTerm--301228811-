@@ -1,3 +1,8 @@
+//File Name - MidTerm Test [Mail Pilot game]
+//Author's Name - Poojan Jitendrakumar Patel
+//Student Id - 301228811
+//Date - 05/03/2022
+
 import SpriteKit
 import GameplayKit
 

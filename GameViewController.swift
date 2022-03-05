@@ -11,9 +11,14 @@ import GameplayKit
 
 class GameViewController: UIViewController, GameManager {
     
+    // Button outlets
     
+    @IBOutlet weak var StartButton: UIButton!
+    
+    // Label Outlets
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var LivesLabel: UILabel!
+    @IBOutlet weak var StartLabel: UILabel!
     
     var currentScene: SKScene?
     
@@ -25,7 +30,7 @@ class GameViewController: UIViewController, GameManager {
         ScoreLabel.isHidden = true
         CollisionManager.gameViewController = self
         
-        SetScene(sceneName: "GameScene")
+        SetScene(sceneName: "StartScene")
         
         //ScoreManager.Score = 0
         //ScoreManager.Lives = 5
@@ -87,6 +92,8 @@ class GameViewController: UIViewController, GameManager {
     {
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
+        StartButton.isHidden = false
+        StartLabel.isHidden = false
     }
     
     func PresentEndScene()
@@ -97,4 +104,17 @@ class GameViewController: UIViewController, GameManager {
         
     }
     
+    @IBAction func StartButton_Pressed(_ sender: UIButton)
+    {
+        StartButton.isHidden = true
+        ScoreLabel.isHidden = false
+        LivesLabel.isHidden = false
+        StartLabel.isHidden = true
+        
+        ScoreManager.Score = 0
+        ScoreManager.Lives = 5
+        updateLivesLabel()
+        updateScoreLabel()
+        SetScene(sceneName: "GameScene")
+    }
 }

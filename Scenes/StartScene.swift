@@ -3,10 +3,20 @@ import GameplayKit
 
 class StartScene: SKScene
 {
+    
+    // Instance variables
+    var ocean: Ocean?
+    
     override func didMove(to view: SKView)
     {
         name = "START"
+        screenWidth = frame.width
+        screenHeight = frame.height
         
+        // Add ocean to the scene
+        ocean = Ocean()
+        ocean?.position = CGPoint(x:0,y: 773)
+        addChild(ocean!)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -43,7 +53,9 @@ class StartScene: SKScene
     }
     
     
-    override func update(_ currentTime: TimeInterval) {
+    override func update(_ currentTime: TimeInterval)
+    {
+        ocean?.Update()
        
     }
     

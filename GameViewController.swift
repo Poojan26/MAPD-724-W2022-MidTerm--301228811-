@@ -14,11 +14,13 @@ class GameViewController: UIViewController, GameManager {
     // Button outlets
     
     @IBOutlet weak var StartButton: UIButton!
+    @IBOutlet weak var EndButton: UIButton!
     
     // Label Outlets
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var LivesLabel: UILabel!
     @IBOutlet weak var StartLabel: UILabel!
+    @IBOutlet weak var GameOverLabel: UILabel!
     
     var currentScene: SKScene?
     
@@ -28,6 +30,8 @@ class GameViewController: UIViewController, GameManager {
         // Initialize the Lives and Score
         LivesLabel.isHidden = true
         ScoreLabel.isHidden = true
+        GameOverLabel.isHidden = true
+        EndButton.isHidden = true
         CollisionManager.gameViewController = self
         
         SetScene(sceneName: "StartScene")
@@ -94,12 +98,15 @@ class GameViewController: UIViewController, GameManager {
         LivesLabel.isHidden = true
         StartButton.isHidden = false
         StartLabel.isHidden = false
+        
     }
     
     func PresentEndScene()
     {
         ScoreLabel.isHidden = true
         LivesLabel.isHidden = true
+        GameOverLabel.isHidden = false
+        EndButton.isHidden = false
         SetScene(sceneName: "EndScene")
         
     }
@@ -116,5 +123,19 @@ class GameViewController: UIViewController, GameManager {
         updateLivesLabel()
         updateScoreLabel()
         SetScene(sceneName: "GameScene")
+    }
+    
+    @IBAction func EndButton_Pressed(_ sender: UIButton)
+    {
+        EndButton.isHidden = true
+        LivesLabel.isHidden = false
+        ScoreLabel.isHidden = false
+        GameOverLabel.isHidden = true
+        ScoreManager.Score = 0
+        ScoreManager.Lives = 5
+        updateLivesLabel()
+        updateScoreLabel()
+        SetScene(sceneName: "GameScene")
+        
     }
 }
